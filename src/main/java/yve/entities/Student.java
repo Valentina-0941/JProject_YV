@@ -26,16 +26,10 @@ public class Student {
     private String birthdate;
     private String university;
     private String faculty;
+    private String vkId;
     private boolean isClosed;
 
 
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Progress> progresses = new ArrayList<>();
-
-    @Override
-    public String toString() {
-        return ulearnId + "\t" + name + "\t" + surname + "\t" + email + "\t" + studentGroup;
-    }
-
-
 }

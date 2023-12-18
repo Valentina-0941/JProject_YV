@@ -14,8 +14,9 @@
 <!--        <property name="hibernate.show_sql">true</property>-->
 <!--        <property name="hibernate.format_sql">true</property>-->
 
-        <property name="hbm2ddl.auto">create</property>
-<!--        <property name="hbm2ddl.auto">update</property>-->
+<!--        <property name="hbm2ddl.auto">create</property>-->
+<!--        <property name="hibernate.jdbc.batch_size">100</property>-->
+        <property name="hbm2ddl.auto">update</property>
         <mapping class="yve.entities.Student"/>
         <mapping class="yve.entities.Task"/>
         <mapping class="yve.entities.Progress"/>

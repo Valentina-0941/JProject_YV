@@ -2,6 +2,7 @@ package yve;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.StatelessSession;
 import org.hibernate.cfg.Configuration;
 import yve.io.Parser;
 import yve.io.VKParser;
@@ -27,18 +28,20 @@ public class App {
         Configuration configuration = new Configuration();
         configuration.configure();
         SessionFactory factory = configuration.buildSessionFactory();
-        Session session = factory.openSession();
+        StatelessSession session = factory.openStatelessSession();
+
         session.beginTransaction();
         for (int i = 0; i < sl; i++) {
-            session.save(s.get(i));
+            session.insert(s.get(i));
         }
         for (int i = 0; i < tl; i++) {
-            session.save(t.get(i));
+            session.insert(t.get(i));
         }
         for (int i = 0; i < pl; i++) {
-            session.save(p.get(i));
+            session.insert(p.get(i));
         }
         session.getTransaction().commit();
+
         session.close();
         factory.close();
     }

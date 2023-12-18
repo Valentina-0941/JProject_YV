@@ -70,6 +70,9 @@ public class VKParser {
                 String faculty = item.path("faculty_name").asText();
                 map.put("faculty", faculty);
 
+                String vkId = item.path("id").asText();
+                map.put("vkId", vkId);
+
                 boolean isClosed = item.path("is_closed").asBoolean();
                 map.put("is_closed", Boolean.toString(isClosed));
 

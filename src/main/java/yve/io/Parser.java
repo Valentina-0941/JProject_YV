@@ -6,7 +6,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.hibernate.query.Query;
 import yve.entities.Progress;
 import yve.entities.Student;
 import yve.entities.Task;
@@ -14,7 +13,6 @@ import yve.entities.Task;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -120,19 +118,17 @@ public class Parser {
                 student.setSurname(builder.toString());
             }
 
-            temp(student, list);
+            addVKInformation(student, list);
             students.add(student);
         }
     }
 
-    private void temp(Student student, List<HashMap<String, String>> list) {
+    private void addVKInformation(Student student, List<HashMap<String, String>> list) {
         for (HashMap<String, String> map : list) {
             if (!map.get("first_name").equals(student.getName()) || !map.get("last_name").equals(student.getSurname())) {
                 continue;
             }
-
-            System.out.println("TEST: " + student.getName() + " | " + student.getSurname());
-
+            student.setVkId(map.get("vkId"));
             student.setSex(map.get("sex"));
             student.setBirthdate(map.get("bdate"));
             student.setCity(map.get("city"));
